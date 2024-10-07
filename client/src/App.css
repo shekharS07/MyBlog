@@ -147,6 +147,7 @@ button{
   justify-content: center;
   color:#aaa;
   font-size:.7rem;
+  margin-top:6px;
 }
 .post-page .author{
   display: flex;
