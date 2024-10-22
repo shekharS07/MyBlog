@@ -16,7 +16,7 @@ dotenv.config();
 const upload = multer({ dest: "uploads/" });
 const app = express();
 
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(cors({ credentials: true, origin: "https://myblog-client-shivam.vercel.app" }));
 app.use(express.json());
 app.use(cookieParser());
 
