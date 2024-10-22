@@ -25,6 +25,10 @@ const secret = "ygf7832ybuywqegfd8732rf7rgf3bfjdd";
 
 await mongoose.connect(process.env.MONGO_PASSWORD);
 
+app.get("/",(req,res)=>{
+  res.json({message: "Backend working successfully",status: 200})
+})
+
 app.post("/register", async (req, res) => {
   const { username, password } = req.body;
   try {

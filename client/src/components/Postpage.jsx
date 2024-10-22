@@ -9,19 +9,21 @@ const Postpage = () => {
   const { id } = useParams();
   const { userInfo } = useContext(UserContext);
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`).then((response) => {
-      response.json().then((postInfo) => {
-        setPostInfo(postInfo);
-      });
-    });
+    fetch(`https://my-blog-api-shivam.vercel.app/post/${id}`).then(
+      (response) => {
+        response.json().then((postInfo) => {
+          setPostInfo(postInfo);
+        });
+      }
+    );
   }, []);
-  const date=postInfo?.createdAt;
+  const date = postInfo?.createdAt;
 
   return (
     <div className="post-page">
       <h1>{postInfo?.title} </h1>
-      {date && (<time>{formatISO9075(new Date(date))}</time>)}
-      
+      {date && <time>{formatISO9075(new Date(date))}</time>}
+
       <div className="author">by {postInfo?.author.username}</div>
       {userInfo?.id === postInfo?.author._id && (
         <div className="edit">

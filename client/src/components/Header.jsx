@@ -3,28 +3,26 @@ import { Link } from "react-router-dom";
 import UserContext from "../store/UserContext";
 import { FaBloggerB } from "react-icons/fa";
 
-
-
 function Header() {
-  const {setUserInfo,userInfo}=useContext(UserContext);
+  const { setUserInfo, userInfo } = useContext(UserContext);
   useEffect(() => {
-    fetch('http://localhost:4000/profile', {
-      credentials: 'include',
-    }).then(response => {
-      response.json().then(userInfo => {
+    fetch("https://my-blog-api-shivam.vercel.app/profile", {
+      credentials: "include",
+    }).then((response) => {
+      response.json().then((userInfo) => {
         setUserInfo(userInfo);
       });
     });
   }, []);
 
   function logout() {
-    fetch('http://localhost:4000/logout', {
-      credentials: 'include',
-      method: 'POST',
+    fetch("https://my-blog-api-shivam.vercel.app/logout", {
+      credentials: "include",
+      method: "POST",
     });
     setUserInfo(null);
   }
-  const username=userInfo?.username;
+  const username = userInfo?.username;
   return (
     <header>
       <Link to="/" className="logo">
@@ -36,7 +34,9 @@ function Header() {
         {username && (
           <>
             <Link to="/create">Create new post</Link>
-            <a className="logout" onClick={logout}>Logout ( {username})</a>
+            <a className="logout" onClick={logout}>
+              Logout ( {username})
+            </a>
           </>
         )}
         {!username && (
